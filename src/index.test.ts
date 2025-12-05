@@ -8,7 +8,7 @@ import {
   parse,
   toMermaid,
   toInk,
-  DSMDocument,
+  MDTDocument,
   QuestionNode,
   IfNode,
   TopicNode,
@@ -218,7 +218,7 @@ describe('Integration: Type safety', () => {
   - **IF:** "Answer"
     - **Q:** Follow-up?
 `;
-    const doc: DSMDocument = parse(input);
+    const doc: MDTDocument = parse(input);
 
     // Verify TopicNode
     const topic: TopicNode = doc.topics[0];

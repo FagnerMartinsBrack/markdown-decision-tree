@@ -1,8 +1,8 @@
 /**
  * markdown-decision-tree
  *
- * A Decision Script Markdown (DSM) parser and converter.
- * Converts DSM Markdown to Mermaid graphs and Ink scripts.
+ * A Markdown Decision Tree (MDT) parser and converter.
+ * Converts MDT Markdown to Mermaid graphs and Ink scripts.
  *
  * @example
  * ```typescript
@@ -29,11 +29,11 @@
 
 // Re-export types
 export {
-  DSMDocument,
+  MDTDocument,
   QuestionNode,
   IfNode,
   TopicNode,
-  DSMNode,
+  MDTNode,
   ParseError,
 } from './types';
 

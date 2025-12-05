@@ -1,14 +1,14 @@
 /**
- * Converters for DSM (Decision Script Markdown) to other formats.
+ * Converters for MDT (Markdown Decision Tree) to other formats.
  */
 
-import { DSMDocument, QuestionNode, TopicNode } from './types';
+import { MDTDocument, QuestionNode, TopicNode } from './types';
 import { parse } from './parser';
 
 /**
- * Converts DSM Markdown to Mermaid graph syntax.
+ * Converts MDT Markdown to Mermaid graph syntax.
  *
- * @param markdown - Raw DSM Markdown string
+ * @param markdown - Raw MDT Markdown string
  * @returns Mermaid graph TD syntax
  * @throws ParseError on invalid input
  *
@@ -26,9 +26,9 @@ export function toMermaid(markdown: string): string {
 }
 
 /**
- * Converts DSM Markdown to Ink choice script syntax.
+ * Converts MDT Markdown to Ink choice script syntax.
  *
- * @param markdown - Raw DSM Markdown string
+ * @param markdown - Raw MDT Markdown string
  * @returns Ink narration + choice syntax
  * @throws ParseError on invalid input
  *
@@ -54,7 +54,7 @@ export function toInk(markdown: string): string {
 /**
  * Collect all Q-nodes from a document in ID order.
  */
-function collectAllQuestions(doc: DSMDocument): QuestionNode[] {
+function collectAllQuestions(doc: MDTDocument): QuestionNode[] {
   const questions: QuestionNode[] = [];
 
   function visitQuestion(q: QuestionNode): void {
@@ -102,9 +102,9 @@ function escapeForMermaid(text: string): string {
 }
 
 /**
- * Generate Mermaid graph syntax from DSMDocument.
+ * Generate Mermaid graph syntax from MDTDocument.
  */
-function generateMermaid(doc: DSMDocument): string {
+function generateMermaid(doc: MDTDocument): string {
   const lines: string[] = ['graph TD'];
   const edges: string[] = [];
 
@@ -148,9 +148,9 @@ function generateMermaid(doc: DSMDocument): string {
 }
 
 /**
- * Generate Ink script syntax from DSMDocument.
+ * Generate Ink script syntax from MDTDocument.
  */
-function generateInk(doc: DSMDocument): string {
+function generateInk(doc: MDTDocument): string {
   const lines: string[] = [];
 
   function generateQuestion(q: QuestionNode, indent: number): void {

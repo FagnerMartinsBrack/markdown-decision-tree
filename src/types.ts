@@ -1,5 +1,5 @@
 /**
- * Type definitions for Decision Script Markdown (DSM) format.
+ * Type definitions for Markdown Decision Tree (MDT) format.
  */
 
 /**
@@ -55,12 +55,12 @@ export interface TopicNode {
 /**
  * Union type for Q-nodes and IF-nodes.
  */
-export type DSMNode = QuestionNode | IfNode;
+export type MDTNode = QuestionNode | IfNode;
 
 /**
- * Represents a parsed DSM document.
+ * Represents a parsed MDT document.
  */
-export interface DSMDocument {
+export interface MDTDocument {
   /** Q-nodes that appear before any heading (orphan questions) */
   rootQuestions: QuestionNode[];
   /** Top-level topics (# headings) */
@@ -68,7 +68,7 @@ export interface DSMDocument {
 }
 
 /**
- * Error thrown when parsing invalid DSM Markdown.
+ * Error thrown when parsing invalid MDT Markdown.
  */
 export class ParseError extends Error {
   /** 1-indexed line number where the error occurred */

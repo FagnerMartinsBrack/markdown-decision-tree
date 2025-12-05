@@ -1,4 +1,4 @@
-import { ParseError, QuestionNode, IfNode, TopicNode, DSMDocument } from './types';
+import { ParseError, QuestionNode, IfNode, TopicNode, MDTDocument } from './types';
 
 describe('ParseError', () => {
   it('should include line number in message', () => {
@@ -72,8 +72,8 @@ describe('Type structures', () => {
     expect(node.level).toBe(1);
   });
 
-  it('should allow creating a valid DSMDocument', () => {
-    const doc: DSMDocument = {
+  it('should allow creating a valid MDTDocument', () => {
+    const doc: MDTDocument = {
       rootQuestions: [],
       topics: [],
     };

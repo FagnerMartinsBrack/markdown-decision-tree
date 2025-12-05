@@ -1,10 +1,10 @@
 /**
- * DSM (Decision Script Markdown) parser.
- * Parses DSM Markdown into an AST representation.
+ * MDT (Markdown Decision Tree) parser.
+ * Parses MDT Markdown into an AST representation.
  */
 
 import {
-  DSMDocument,
+  MDTDocument,
   QuestionNode,
   IfNode,
   TopicNode,
@@ -27,13 +27,13 @@ interface StackItem {
 }
 
 /**
- * Parses DSM Markdown into a DSMDocument AST.
+ * Parses MDT Markdown into an MDTDocument AST.
  *
- * @param markdown - Raw DSM Markdown string
- * @returns Parsed DSMDocument
+ * @param markdown - Raw MDT Markdown string
+ * @returns Parsed MDTDocument
  * @throws ParseError on invalid input
  */
-export function parse(markdown: string): DSMDocument {
+export function parse(markdown: string): MDTDocument {
   // Handle empty input
   if (markdown.length === 0) {
     throw new ParseError('Document must contain at least one Q-node', 0);
@@ -208,8 +208,8 @@ function validateNoBoldMarkers(text: string, lineNumber: number): void {
 /**
  * Build the AST from parsed lines.
  */
-function buildAST(parsedLines: ParsedLine[]): DSMDocument {
-  const doc: DSMDocument = {
+function buildAST(parsedLines: ParsedLine[]): MDTDocument {
+  const doc: MDTDocument = {
     rootQuestions: [],
     topics: [],
   };
@@ -379,7 +379,7 @@ function countNestedQuestions(q: QuestionNode): number {
 /**
  * Assign sequential IDs to all Q-nodes in pre-order depth-first traversal.
  */
-function assignQuestionIds(doc: DSMDocument): void {
+function assignQuestionIds(doc: MDTDocument): void {
   let counter = 1;
 
   function visitQuestion(q: QuestionNode): void {
