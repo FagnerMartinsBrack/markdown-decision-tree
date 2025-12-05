@@ -58,7 +58,7 @@ console.log(inkScript);
 
 ## Overview
 
-**Decision Script Markdown (DSM)** is a constrained Markdown dialect designed to represent branching conditional logic in a human-readable, machine-parseable format.
+**Markdown Decision Tree (MDT)** is a constrained Markdown dialect designed to represent branching conditional logic in a human-readable, machine-parseable format.
 
 ### Intended For
 
@@ -89,7 +89,7 @@ console.log(inkScript);
 
 ## Lexical Elements
 
-DSM allows **only** the following Markdown constructs. All other Markdown features are **forbidden**.
+MDT allows **only** the following Markdown constructs. All other Markdown features are **forbidden**.
 
 ### ATX Headings
 
@@ -250,7 +250,7 @@ Indentation is defined by the number of leading spaces before the `-` marker.
 
 ### Valid Document Structure
 
-A valid DSM document:
+A valid MDT document:
 
 1. May start with zero or more heading lines (topic sections)
 2. Contains one or more Q-nodes (at indent level 0 or under topics)
@@ -538,10 +538,10 @@ Encode decision logic for medical, technical, or procedural troubleshooting work
 
 ### `toMermaid(markdownText: string): string`
 
-Converts DSM Markdown to Mermaid graph syntax.
+Converts MDT Markdown to Mermaid graph syntax.
 
 **Parameters:**
-- `markdownText` (string): Raw DSM Markdown
+- `markdownText` (string): Raw MDT Markdown
 
 **Returns:** Mermaid `graph TD` syntax (string)
 
@@ -558,10 +558,10 @@ console.log(mermaid);
 
 ### `toInk(markdownText: string): string`
 
-Converts DSM Markdown to Ink choice script syntax.
+Converts MDT Markdown to Ink choice script syntax.
 
 **Parameters:**
-- `markdownText` (string): Raw DSM Markdown
+- `markdownText` (string): Raw MDT Markdown
 
 **Returns:** Ink narration + choice syntax (string)
 
@@ -587,14 +587,14 @@ console.log(ink);
 //     Q: Why not?
 ```
 
-### `parse(markdownText: string): DSMDocument`
+### `parse(markdownText: string): MDTDocument`
 
-Parses DSM Markdown into an internal Abstract Syntax Tree (AST).
+Parses MDT Markdown into an internal Abstract Syntax Tree (AST).
 
 **Parameters:**
-- `markdownText` (string): Raw DSM Markdown
+- `markdownText` (string): Raw MDT Markdown
 
-**Returns:** `DSMDocument` AST object
+**Returns:** `MDTDocument` AST object
 
 **Throws:** `ParseError` on invalid input
 
@@ -603,12 +603,12 @@ Parses DSM Markdown into an internal Abstract Syntax Tree (AST).
 ## Type Definitions
 
 ```typescript
-interface DSMDocument {
+interface MDTDocument {
   rootQuestions: QuestionNode[];  // Q-nodes with no preceding heading
   topics: TopicNode[];            // Top-level topics (# headings)
 }
 
-type DSMNode = QuestionNode | IfNode;
+type MDTNode = QuestionNode | IfNode;
 
 interface QuestionNode {
   type: 'question';
@@ -756,4 +756,4 @@ For issues, questions, or suggestions, please open an issue on the repository.
 
 ---
 
-**Decision Script Markdown Format** – Making witness preparation, interview planning, and interactive dialogue trees simple, structured, and accessible.
+**MArkdown Decision Tree (MDT) Format** – Making witness preparation, interview planning, and interactive dialogue trees simple, structured, and accessible.

@@ -158,9 +158,8 @@ function generateInk(doc: MDTDocument): string {
     lines.push(`${prefix}Q: ${q.text}`);
 
     if (q.children.length > 0) {
-      lines.push(''); // Blank line before choices
-
       for (const ifNode of q.children) {
+        lines.push(''); // Blank line before each choice
         lines.push(`${prefix}+ ${ifNode.answer}`);
 
         for (const childQ of ifNode.children) {

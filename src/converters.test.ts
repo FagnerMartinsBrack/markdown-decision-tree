@@ -143,6 +143,19 @@ describe('toInk', () => {
     expect(output).toContain('Question?\n\n+ "Yes"');
   });
 
+  it('generates blank line before each sibling choice', () => {
+    const input = `- **Q:** Question?
+  - **IF:** "Yes"
+    - **Q:** Follow-up 1
+  - **IF:** "No"
+    - **Q:** Follow-up 2
+`;
+    const output = toInk(input);
+    // Each choice should be preceded by a blank line
+    expect(output).toContain('Question?\n\n+ "Yes"');
+    expect(output).toContain('Follow-up 1\n\n+ "No"');
+  });
+
   it('handles multiple branches', () => {
     const input = `- **Q:** Choose?
   - **IF:** "A"
